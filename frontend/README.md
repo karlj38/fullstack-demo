@@ -20,8 +20,9 @@ There is already an example showing the list of available courses.
 ## Bonus tasks
 1. [ ] Add authentication
 2. [ ] Add sort and filter for courses page
-3. [ ] Get available locations based on browsers location
-4. [ ] Add [Components unit testing](https://vuejs.org/guide/scaling-up/testing.html#component-testing) using the 
+3. [ ] Make UI nicer
+4. [ ] Get available locations based on browsers location
+5. [ ] Add [Components unit testing](https://vuejs.org/guide/scaling-up/testing.html#component-testing) using the 
    testing framework of your choice
 
 

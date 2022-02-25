@@ -26,6 +26,9 @@ You can choose the way you prefer to connect to the database, the skeleton proje
 but you can use any of [Mongoose](https://mongoosejs.com/), [Sequelize](https://sequelize.org/), 
 [Prisma](https://github.com/prisma/prisma), etc...
 
+While you are free to remove the skeletons code for the Frontend and the backend. It is recommended that you have a 
+look at it and run them first as they provide a starting example for this assessment.
+
 ## Structure
 
 The Project consist of 3 folders:
