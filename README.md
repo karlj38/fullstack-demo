@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="http://nuom.co.uk/" target="blank"><img src="https://assets-global.website-files.
+com/60893c95d5c9871201e719d5/60894c461d15a242648ac3ab_logo-black.svg" width="320" alt="Nuom 
+Logo" /></a>
+</p>
+
 # Nuom's Junior Fullstack Test 
 
 If you are reading this, it's probably because you are thinking of joining our engineering team at [nuom](https://nuom.co.uk). With this test, we will assess:
@@ -11,7 +17,7 @@ If you are reading this, it's probably because you are thinking of joining our e
 For this test you are free to use the language and framework which is the most comfortable to you for both the 
 Frontend and Backend.
 However, we are providing the skeleton of the project using [NestJS](https://nestjs.com/) framework for the backend 
-and [VueJs (v2)](https://v2.vuejs.org/) for the Frontend
+and [VueJS (v3)](https://vuejs.org/) for the Frontend
 
 You are free to use the database of your choice, we recommend [SQLite](https://www.sqlite.org/index.html) to makes 
 things simpler, but you can use [MongoDB](https://www.mongodb.com/) if you prefer.
@@ -82,6 +88,11 @@ folder
 ### Bookings:
 For you to decide
 
+
+## Exercises:
+
+- You will find a list of tasks for the Backend in [backend/README.md](backend/README.md)
+- You will find a list of tasks for the Frontend in [frontend/README.md](frontend/README.md)
 
 ## How to submit:
 * Create a Fork of this repository
