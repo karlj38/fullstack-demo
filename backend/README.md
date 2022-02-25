@@ -44,8 +44,6 @@ We recommend to use Passport.js for any authentication. See [NestJS documentatio
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
 ## Description
 
@@ -96,6 +94,9 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+The server is then available ad [http://localhost:5500](http://localhost:5500) (you can change the port in the [main.
+ts file](src/main.ts))
 
 ## Test
 
