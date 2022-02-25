@@ -1,6 +1,5 @@
 <p align="center">
-  <a href="http://nuom.co.uk/" target="blank"><img src="https://assets-global.website-files.
-com/60893c95d5c9871201e719d5/60894c461d15a242648ac3ab_logo-black.svg" width="320" alt="Nuom 
+  <a href="http://nuom.co.uk/" target="blank"><img src="https://assets-global.website-files.com/60893c95d5c9871201e719d5/60894c461d15a242648ac3ab_logo-black.svg" width="320" alt="Nuom 
 Logo" /></a>
 </p>
 
