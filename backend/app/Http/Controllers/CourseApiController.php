@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\{
+    Course
+};
 
 use Illuminate\Http\Request;
 
@@ -13,7 +16,10 @@ class CourseApiController extends Controller
      */
     public function index()
     {
-        //
+        $code = 200;
+        $output = Course::all();
+
+        return response($output, $code);
     }
 
     /**
