@@ -14,7 +14,21 @@ class LocationApiController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        $code = 200;
+        $output = [];
+
+        try {
+            $request->validate(["city" => "string"]);
+
+            $city = ucWords($request->city);
+
+            $output = Location::when($city, fn ($query) => $query->where("city", $city))->get();
+        } catch (\Throwable $th) {
+            $code = 400;
+            $output["error"] = "Invalid city: $request->city";
+        }
+
+        return response($output, $code);
     }
 
     /**
