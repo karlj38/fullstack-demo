@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentApiController extends Controller
 {
@@ -13,7 +14,10 @@ class StudentApiController extends Controller
      */
     public function index()
     {
-        //
+        $code = 200;
+        $output = Student::all();
+
+        return response($output, $code);
     }
 
     /**
