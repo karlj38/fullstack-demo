@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CourseApiController,
+    LocationApiController,
     TrainerApiController
 };
 
@@ -24,5 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResources([
     "courses" => CourseApiController::class,
+    "locations" => LocationApiController::class,
     "trainers" => TrainerApiController::class
 ]);
