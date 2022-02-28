@@ -39,7 +39,10 @@ class StudentApiController extends Controller
      */
     public function show($id)
     {
-        //
+        $output = Student::find($id);
+        $code = $output ? 200 : 404;
+
+        return response($output, $code);
     }
 
     /**
