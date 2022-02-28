@@ -41,7 +41,10 @@ class BookingApiController extends Controller
      */
     public function show($id)
     {
-        //
+        $output = Booking::find($id);
+        $code = $output ? 200 : 404;
+
+        return response($output, $code);
     }
 
     /**
