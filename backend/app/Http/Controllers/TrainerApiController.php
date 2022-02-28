@@ -58,7 +58,10 @@ class TrainerApiController extends Controller
      */
     public function show($id)
     {
-        //
+        $trainer = Trainer::find($id);
+        $code = $trainer ? 200 : 404;
+
+        return response($trainer, $code);
     }
 
     /**
