@@ -6,7 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\{
     CourseSeeder,
-    LocationSeeder
+    LocationSeeder,
+    TrainerSeeder
 };
 
 class DatabaseSeeder extends Seeder
@@ -20,7 +21,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CourseSeeder::class,
-            LocationSeeder::class
+            LocationSeeder::class,
+            TrainerSeeder::class
         ]);
     }
 }
