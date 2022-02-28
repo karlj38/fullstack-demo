@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\{
+    Booking
+};
 
 class BookingApiController extends Controller
 {
@@ -13,7 +16,10 @@ class BookingApiController extends Controller
      */
     public function index()
     {
-        //
+        $code = 200;
+        $output = Booking::all();
+
+        return response($output, $code);
     }
 
     /**
