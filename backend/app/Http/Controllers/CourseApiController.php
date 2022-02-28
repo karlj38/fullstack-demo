@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\{
-    Course
+    Course,
+    Trainer
 };
 
 use Illuminate\Http\Request;
@@ -41,7 +42,21 @@ class CourseApiController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::find($id);
+        $code = 200;
+        $output = null;
+
+        if ($course) {
+            $course->trainers = Trainer::where("level", ">=", $course->level)
+            ->whereJsonContains("competencies", $course->topic)
+            ->get();
+
+            $output = $course;
+        } else {
+            $code = 404;
+        }
+
+        return response($output, $code);
     }
 
     /**
