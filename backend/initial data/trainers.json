@@ -10,7 +10,7 @@
   {"firstName":"Melita","lastName":"Mewe","level":2,"competencies":["Fullstack","Security"],"needWheelchair":false,"city":"Wootton","country":"United Kingdom"},
   {"firstName":"Sharai","lastName":"Ingleston","level":1,"competencies":["Fullstack","Cloud"],"needWheelchair":false,"city":"Newton","country":"United Kingdom"},
   {"firstName":"Anabella","lastName":"Shackesby","level":4,"competencies":["Backend","Fullstack","Cloud","Security"],"needWheelchair":true,"city":"Aston","country":"United Kingdom"},
-  {"firstName":"Clemmie","lastName":"Cordeau]","level":5,"competencies":["Fullstack","Security"],"needWheelchair":false,"city":"Swindon","country":"United Kingdom"},
+  {"firstName":"Clemmie","lastName":"Cordeau","level":5,"competencies":["Fullstack","Security"],"needWheelchair":false,"city":"Swindon","country":"United Kingdom"},
   {"firstName":"Carney","lastName":"Oseman","level":2,"competencies":["Backend","Cloud","Security"],"needWheelchair":false,"city":"Stapleford","country":"United Kingdom"},
   {"firstName":"Alyda","lastName":"Sands","level":4,"competencies":["Fullstack","Security"],"needWheelchair":false,"city":"Edinburgh","country":"United Kingdom"},
   {"firstName":"Claribel","lastName":"Blakelock","level":5,"competencies":["Backend","Cloud"],"needWheelchair":false,"city":"Middleton","country":"United Kingdom"},
