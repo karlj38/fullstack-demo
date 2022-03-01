@@ -7,7 +7,10 @@ use \Illuminate\Validation\ValidationException;
 use Carbon\Carbon;
 use App\Models\{
     Booking,
-    Student
+    Course,
+    Location,
+    Student,
+    Trainer
 };
 
 class BookingApiController extends Controller
@@ -24,7 +27,6 @@ class BookingApiController extends Controller
         if ($error instanceof ValidationException) {
             $message = $error->errors();
         } else if ($error instanceof \Exception) {
-        //     // student ID error
             $message = json_decode($error->getMessage());
         } else {
             $message = $error->getMessage();
@@ -52,6 +54,9 @@ class BookingApiController extends Controller
             "certificate_needed" => "required|boolean",
             "comments" => "string|nullable"
         ]);
+
+        // additional validation for Trainer
+        $this->validateTrainer($request->course_id, $request->location_id, $request->trainer_id,);
 
         // additional validation for student ID list
         $form["students"] = $this->validateStudentIds($request->student_ids);
@@ -98,6 +103,37 @@ class BookingApiController extends Controller
             return $students;
         } catch (\Exception $err) {
             $error->student_ids = $err->getMessage();
+            throw new \Exception(json_encode($error));
+        }
+    }
+
+    function validateTrainer($courseId, $locationId, $trainerId) {
+        $course = Course::find($courseId);
+        $error = (object) ["trainer_id" => []];
+        $location = Location::find($locationId);
+        $trainer = Trainer::find($trainerId);
+        $trainerName = "$trainer->firstName $trainer->lastName";
+
+        try {
+            $message = "Trainer $trainerName (ID:$trainer->id) is ";
+            if (!in_array($course->topic, $trainer->competencies)) {
+                throw new \Exception("$message not qualified in this Course: $course->name (ID: $course->id) topic: $course->topic");
+            }
+
+            if ($trainer->level < $course->level) {
+                throw new \Exception("$message not high enough level ($trainer->level) for this Course: $course->name (ID: $course->id) at level $course->level");
+            }
+
+            if ($trainer->city !== $location->city) {
+                throw new \Exception("$message not in the same city ($trainer->city) as this Location: $location->city");
+            }
+
+            if ($trainer->needWheelchair && !$location->wheelchairAccessible) {
+                throw new \Exception("$message unable to teach at this Location: $location->name (ID:$location->id) due to accessibility limitations");
+            }
+
+        } catch (\Exception $err) {
+            $error->trainer_id = $err->getMessage();
             throw new \Exception(json_encode($error));
         }
     }
