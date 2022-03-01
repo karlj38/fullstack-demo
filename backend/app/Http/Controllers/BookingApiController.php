@@ -147,8 +147,14 @@ class BookingApiController extends Controller
      */
     public function show($id)
     {
+        $code = 200;
         $output = Booking::find($id);
-        $code = $output ? 200 : 404;
+
+        if ($output) {
+            $output->students = Student::whereIn("id", $output->students)->get();
+        } else {
+            $code = 404;
+        }
 
         return response($output, $code);
     }
