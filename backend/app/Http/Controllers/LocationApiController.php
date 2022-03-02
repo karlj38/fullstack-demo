@@ -8,6 +8,23 @@ use App\Models\Location;
 class LocationApiController extends Controller
 {
     /**
+     * Filter Locations within a certain radius of a given lat/lng
+     *
+     * @return Array of Locations
+     */
+    private function filterByRadius($locations, Request $request) {
+        return $locations->filter(function ($location) use ($request) {
+            $r = (int)$request->radius;
+            $x = (float)$location->longitude * 69;
+            $a = (float)$request->longitude * 69;
+            $y = (float)$location->latitude * 54.6;
+            $b = (float)$request->latitude * 54.6;
+
+            return ($x - $a) ** 2 + ($y - $b) ** 2 <= $r ** 2 ? true : false;
+        })->values();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,14 +35,24 @@ class LocationApiController extends Controller
         $output = [];
 
         try {
-            $request->validate(["city" => "string"]);
+            $request->validate([
+                "city" => "string",
+                "latitude" => "required_with:radius|numeric|min:-90|max:90",
+                "longitude" => "required_with:radius|numeric|min:-180|max:180",
+                "radius" => "prohibits:city|integer|min:1|max:100",
+            ]);
 
             $city = ucWords($request->city);
 
             $output = Location::when($city, fn ($query) => $query->where("city", $city))->get();
-        } catch (\Throwable $th) {
+
+            if ($request->radius) {
+                $output = $this->filterByRadius($output, $request);
+            }
+        } catch (\Throwable $error) {
             $code = 400;
             $output["error"] = "Invalid city: $request->city";
+            $output = $error;
         }
 
         return response($output, $code);
