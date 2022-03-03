@@ -44,7 +44,9 @@ class LocationApiController extends Controller
 
             $city = ucWords($request->city);
 
-            $output = Location::when($city, fn ($query) => $query->where("city", $city))->get();
+            $output = Location::when($city, fn ($query) => $query->where("city", $city))
+                ->orderBy("name")
+                ->get();
 
             if ($request->radius) {
                 $output = $this->filterByRadius($output, $request);

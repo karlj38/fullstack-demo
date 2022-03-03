@@ -30,6 +30,8 @@ class TrainerApiController extends Controller
                 $query->where("level", ">=", $course->level)
                     ->whereJsonContains("competencies", $course->topic);
                 })
+                ->orderBy("firstName")
+                ->orderBy("lastName")
                 ->get();
         } catch (\Throwable $th) {
             $code = 400;

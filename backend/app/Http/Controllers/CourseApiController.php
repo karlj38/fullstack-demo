@@ -18,7 +18,7 @@ class CourseApiController extends Controller
     public function index()
     {
         $code = 200;
-        $output = Course::all();
+        $output = Course::orderBy("name")->get();
 
         return response($output, $code);
     }

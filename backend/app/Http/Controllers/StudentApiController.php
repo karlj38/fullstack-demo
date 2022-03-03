@@ -15,7 +15,7 @@ class StudentApiController extends Controller
     public function index()
     {
         $code = 200;
-        $output = Student::all();
+        $output = Student::orderBy("firstName")->orderBy("lastName")->get();
 
         return response($output, $code);
     }

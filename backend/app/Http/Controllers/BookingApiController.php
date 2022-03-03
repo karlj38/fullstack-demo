@@ -148,7 +148,7 @@ class BookingApiController extends Controller
     public function index()
     {
         $code = 200;
-        $output = Booking::all();
+        $output = Booking::orderBy("start")->get();
 
         return response($output, $code);
     }
