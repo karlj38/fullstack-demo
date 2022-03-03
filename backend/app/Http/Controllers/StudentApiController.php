@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Student;
+use App\Models\{
+    Booking,
+    Course,
+    Student
+};
 
 class StudentApiController extends Controller
 {
@@ -40,6 +44,13 @@ class StudentApiController extends Controller
     public function show($id)
     {
         $output = Student::find($id);
+
+        if ($output) {
+            $bookings = Booking::whereJsonContains("students", $output->id)->get();
+            $courseIds = $bookings->pluck("course_id")->unique();
+            $output->courses = Course::whereIn("id", $courseIds)->get();
+        }
+
         $code = $output ? 200 : 404;
 
         return response($output, $code);
