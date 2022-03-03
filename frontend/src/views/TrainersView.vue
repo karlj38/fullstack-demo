@@ -1,32 +1,31 @@
 <template>
-  <h3>List of Courses</h3>
+  <h3>List of Trainers</h3>
   <v-container
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!courses.length"
+    v-if="!trainers.length"
     indeterminate
     />
-    <CourseCard
-
-      v-for="course of courses"
-      :course="course"
+    <TrainerCard
+      v-for="trainer of trainers"
+      :trainer="trainer"
     />
   </v-container>
 </template>
 
 <script setup>
 
-import CourseCard from "../components/CourseCard.vue";
+import TrainerCard from "../components/TrainerCard.vue";
 import {getQuery} from "../utils/fetchbackend";
 import {onMounted, ref} from "vue";
 
-const courses = ref([])
+const trainers = ref([])
 
 onMounted( async ()=> {
-  const coursesResponse = await getQuery('courses')
+  const trainersResponse = await getQuery('trainers')
 
-  courses.value = await coursesResponse.json()
+  trainers.value = await trainersResponse.json()
 
 })
 
