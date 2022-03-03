@@ -17,6 +17,7 @@ class StudentFactory extends Factory
             'firstName' => $this->faker->firstName(),
             'lastName' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
+            'needWheelchair' => $this->faker->optional($weight = 0.3, $default = false)->boolean()
         ];
     }
 }

@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
+            $table->boolean('needWheelchair');
             $table->timestamps();
             $table->softDeletes();
         });
