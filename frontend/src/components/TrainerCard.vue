@@ -3,28 +3,31 @@
       class="mx-auto my-4"
       width="300"
   >
-    <v-card-title class="white--text mt-8">
-      <p>
-        {{course.name}}
-      </p>
+    <v-card-title class="flex justify-space-between white--text mt-8">
+      {{fullName}}
+      <v-icon v-if="trainer.needWheelchair" :color="'blue'">
+        mdi-wheelchair-accessibility
+      </v-icon>
     </v-card-title>
-    <v-card-text>
+    <v-card-text class="d-flex flex-wrap topics">
       <v-chip
-        :color="chipColor"
-        outlined
+        v-for="topic in trainer.competencies"
+        :color="chipColor(topic)"
+        :key="topic"
+        class="mb-2 mr-2"
       >
-        {{course.topic}}
+        {{topic}}
       </v-chip>
     </v-card-text>
     <v-card-text>
       <v-icon>mdi-trending-up</v-icon> {{level}}
     </v-card-text>
     <v-card-text>
-      <v-icon>mdi-calendar</v-icon> {{course.duration}} {{course.duration === 1? 'day': 'days'}}
+      <v-icon>mdi-map-marker</v-icon> {{trainer.city}}, {{trainer.country}}
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions class="absolute bottom-0">
       <v-btn
-        :to="`/courses/${course.id}`"
+        :to="{path: `/trainers/${trainer.id}`}"
       >
         Show Details
       </v-btn>
@@ -33,15 +36,19 @@
 </template>
 
 <script setup lang="ts">
-import type {Course} from "../models/course.model";
+import type {Trainer} from "../models/trainer.model";
 import {defineProps, computed} from "vue";
 
 const props = defineProps<{
-  course: Course
+  trainer: Trainer
 }>()
 
+const fullName = computed(()=>{
+    return `${props.trainer.firstName} ${props.trainer.lastName}`
+})
+
 const level = computed(()=>{
-  switch (props.course.level) {
+  switch (props.trainer.level) {
     case 1:
       return 'Beginner'
     case 2:
@@ -55,8 +62,8 @@ const level = computed(()=>{
   }
 })
 
-const chipColor = computed(()=>{
-  switch (props.course.topic) {
+const chipColor = topic=>{
+  switch (topic) {
     case "Backend":
       return 'red'
     case "Cloud":
@@ -68,10 +75,12 @@ const chipColor = computed(()=>{
     case "Security":
       return 'orange'
   }
-})
+}
 
 </script>
 
 <style scoped>
-
+  .topics {
+    min-height: 120px;
+  }
 </style>
