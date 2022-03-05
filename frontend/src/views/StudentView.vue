@@ -13,9 +13,9 @@
     />
   </v-container>
 
-  <h2>Student's Bookings</h2>
+  <template v-if="student && student.bookings && student.bookings.length">
+    <h2>Student's Bookings</h2>
     <v-container
-      v-if="student && student.bookings && student.bookings.length"
       class="d-flex flex-row flex-wrap"
     >
       <BookingCard
@@ -23,6 +23,7 @@
         :booking="booking"
       />
     </v-container>
+  </template>
 </template>
 
 <script setup>

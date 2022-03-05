@@ -14,16 +14,17 @@
     />
   </v-container>
 
-  <h2>Available Trainers</h2>
-  <v-container
-    v-if="course && course.trainers && course.trainers.length"
-    class="d-flex flex-row flex-wrap"
-  >
-    <TrainerCard
-      v-for="trainer in course.trainers"
-      :trainer="trainer"
-    />
-  </v-container>
+  <template v-if="course && course.trainers && course.trainers.length">
+    <h2>Available Trainers</h2>
+    <v-container
+      class="d-flex flex-row flex-wrap"
+    >
+      <TrainerCard
+        v-for="trainer in course.trainers"
+        :trainer="trainer"
+      />
+    </v-container>
+  </template>
 </template>
 
 <script setup>
