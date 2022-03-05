@@ -4,13 +4,12 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!locations.length"
+    v-if="!location"
     indeterminate
     />
     <LocationCard
-      v-for="location of locations"
       :location="location"
-      :show="true"
+      :show="false"
     />
   </v-container>
 </template>
@@ -20,13 +19,16 @@
 import LocationCard from "../components/LocationCard.vue"
 import {getQuery} from "../utils/fetchbackend";
 import {onMounted, ref} from "vue";
+import {useRoute} from "vue-router";
 
-const locations = ref([])
+const location = ref([])
 
 onMounted( async ()=> {
-  const locationsResponse = await getQuery('locations')
+  const route = useRoute();
+  const id = route.params.id;
+  const locationResponse = await getQuery(`locations/${id}`);
 
-  locations.value = await locationsResponse.json()
+  location.value = await locationResponse.json()
 
 })
 
