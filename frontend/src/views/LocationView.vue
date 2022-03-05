@@ -4,8 +4,8 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!location"
-    indeterminate
+      v-if="!location"
+      indeterminate
     />
     <LocationCard
       :location="location"

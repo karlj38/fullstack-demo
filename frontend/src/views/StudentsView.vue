@@ -4,8 +4,8 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!students.length"
-    indeterminate
+      v-if="!students.length"
+      indeterminate
     />
     <StudentCard
       v-for="student of students"

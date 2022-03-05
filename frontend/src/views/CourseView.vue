@@ -4,8 +4,8 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!course"
-    indeterminate
+      v-if="!course"
+      indeterminate
     />
     <CourseCard
       v-else

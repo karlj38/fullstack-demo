@@ -4,8 +4,8 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!locations.length"
-    indeterminate
+      v-if="!locations.length"
+      indeterminate
     />
     <LocationCard
       v-for="location of locations"

@@ -5,13 +5,13 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!bookings.length"
-    indeterminate
+      v-if="!bookings.length"
+      indeterminate
     />
     <BookingCard
-
       v-for="booking of bookings"
       :booking="booking"
+      :show="true"
     />
   </v-container>
 </template>

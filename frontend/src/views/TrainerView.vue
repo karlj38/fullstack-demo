@@ -4,8 +4,8 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-    v-if="!trainer"
-    indeterminate
+      v-if="!trainer"
+      indeterminate
     />
     <TrainerCard
       :trainer="trainer"
