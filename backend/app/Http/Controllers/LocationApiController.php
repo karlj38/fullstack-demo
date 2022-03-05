@@ -79,10 +79,10 @@ class LocationApiController extends Controller
      */
     public function show($id)
     {
-        $location = Location::find($id);
-        $code = $location ? 200 : 404;
+        $output = Location::find($id);
+        $code = $output ? 200 : 404;
 
-        return response($location, $code);
+        return response($output, $code);
     }
 
     /**
