@@ -1,6 +1,6 @@
 <template>
   <v-card
-      class="mx-auto my-4"
+      class="d-flex flex-column mx-auto my-4"
       width="300"
   >
     <v-card-title class="white--text mt-8">
@@ -37,12 +37,10 @@
     <v-card-text>
       <v-icon>mdi-calendar-end</v-icon> {{booking.end}}
     </v-card-text>
-    <v-card-text>
-      <template v-if="booking.certificate_needed">
-        <v-icon>mdi-certificate</v-icon> Certificate Required
-      </template>
+    <v-card-text v-if="booking.certificate_needed">
+      <v-icon>mdi-certificate</v-icon> Certificate Required
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions class="align-end">
       <v-btn
         :to="`/bookings/${booking.id}`"
       >
@@ -101,14 +99,4 @@ const chipColor = computed(()=>{
 a {
   text-decoration: none;
 }
-
-.v-card {
-  min-height: 520px;
-}
-
-.v-card-actions {
-  position: absolute;
-  bottom: 0;
-}
-
 </style>
