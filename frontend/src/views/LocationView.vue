@@ -4,10 +4,11 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-      v-if="!location"
+      v-if="!Object.keys(location).length"
       indeterminate
     />
     <LocationCard
+      v-else
       :location="location"
       :show="false"
     />

@@ -4,10 +4,11 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-      v-if="!course"
+      v-if="!Object.keys(courseg).length"
       indeterminate
     />
     <CourseCard
+      v-else
       :course="course"
       :show="false"
     />

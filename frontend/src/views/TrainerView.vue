@@ -4,10 +4,11 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-      v-if="!trainer"
+      v-if="!Object.keys(trainer).length"
       indeterminate
     />
     <TrainerCard
+      v-else
       :trainer="trainer"
       :show="false"
     />

@@ -4,10 +4,11 @@
       class="d-flex flex-row flex-wrap"
   >
     <v-progress-linear
-      v-if="!student"
+      v-if="!Object.keys(student).length"
       indeterminate
     />
     <StudentCard
+      v-else
       :student="student"
       :show="false"
     />
