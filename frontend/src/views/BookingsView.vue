@@ -1,6 +1,6 @@
 <template>
   <v-btn @click="goToAddBooking">Add New Booking</v-btn>
-  <h3>List of Bookings</h3>
+  <h1>List of Bookings</h1>
   <v-container
       class="d-flex flex-row flex-wrap"
   >

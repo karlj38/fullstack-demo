@@ -1,5 +1,5 @@
 <template>
-  <h3>Course</h3>
+  <h1>Course Details</h1>
   <v-container
       class="d-flex flex-row flex-wrap"
   >
@@ -14,7 +14,7 @@
     />
   </v-container>
 
-  <h3>Available Trainers</h3>
+  <h2>Available Trainers</h2>
   <v-container
     v-if="course && course.trainers && course.trainers.length"
     class="d-flex flex-row flex-wrap"

@@ -1,5 +1,5 @@
 <template>
-  <h3>List of Locations</h3>
+  <h1>Location Details</h1>
   <v-container
       class="d-flex flex-row flex-wrap"
   >

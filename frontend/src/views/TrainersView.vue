@@ -1,5 +1,5 @@
 <template>
-  <h3>List of Trainers</h3>
+  <h1>List of Trainers</h1>
   <v-container
       class="d-flex flex-row flex-wrap"
   >
@@ -10,6 +10,7 @@
     <TrainerCard
       v-for="trainer of trainers"
       :trainer="trainer"
+      :show="true"
     />
   </v-container>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <h3>List of Students</h3>
+  <h1>List of Students</h1>
   <v-container
       class="d-flex flex-row flex-wrap"
   >

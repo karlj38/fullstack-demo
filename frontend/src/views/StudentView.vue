@@ -1,5 +1,5 @@
 <template>
-  <h3>List of Students</h3>
+  <h1>Student Details</h1>
   <v-container
       class="d-flex flex-row flex-wrap"
   >
@@ -13,7 +13,7 @@
     />
   </v-container>
 
-  <h3>Student's Bookings</h3>
+  <h2>Student's Bookings</h2>
     <v-container
       v-if="student && student.bookings && student.bookings.length"
       class="d-flex flex-row flex-wrap"
