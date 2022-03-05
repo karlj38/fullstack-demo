@@ -25,7 +25,10 @@
     <v-card-text>
       <v-icon>mdi-map-marker</v-icon> {{trainer.city}}, {{trainer.country}}
     </v-card-text>
-    <v-card-actions class="absolute bottom-0">
+    <v-card-actions
+      v-if="show"
+      class="absolute bottom-0"
+    >
       <v-btn
         :to="{path: `/trainers/${trainer.id}`}"
       >
@@ -40,7 +43,8 @@ import type {Trainer} from "../models/trainer.model";
 import {defineProps, computed} from "vue";
 
 const props = defineProps<{
-  trainer: Trainer
+  trainer: Trainer,
+  show: Boolean
 }>()
 
 const fullName = computed(()=>{

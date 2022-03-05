@@ -22,7 +22,7 @@
         {{booking.location.name}}
       </a>
     </v-card-text>
-    <v-card-text>
+    <v-card-text v-if="booking.trainer">
       <v-icon>mdi-account</v-icon>
       <a :href="`trainer/${booking.trainer_id}`">
         {{fullName}}
