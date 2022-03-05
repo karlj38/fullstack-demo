@@ -40,7 +40,10 @@
     <v-card-text v-if="booking.certificate_needed">
       <v-icon>mdi-certificate</v-icon> Certificate Required
     </v-card-text>
-    <v-card-actions class="align-end">
+    <v-card-actions
+      v-if="show"
+      class="align-end"
+    >
       <v-btn
         :to="`/bookings/${booking.id}`"
       >
@@ -55,7 +58,8 @@ import type {Booking} from "../models/booking.model";
 import {ref, toRef, defineProps, computed} from "vue";
 
 const props = defineProps<{
-  booking: Booking
+  booking: Booking,
+  show: Boolean
 }>()
 
 const fullName = computed(()=>{
