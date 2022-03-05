@@ -8,9 +8,9 @@
     indeterminate
     />
     <CourseCard
-
       v-for="course of courses"
       :course="course"
+      :show="true"
     />
   </v-container>
 </template>

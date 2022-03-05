@@ -1,3 +1,5 @@
+import type { Trainer } from "./trainer.model";
+
 export interface Course {
     id: number;
     name: string;
@@ -6,4 +8,5 @@ export interface Course {
     duration: number;
     created_at: Date;
     updated_at: Date;
+    trainers: Array<Trainer>
 }

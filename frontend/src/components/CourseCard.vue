@@ -22,7 +22,7 @@
     <v-card-text>
       <v-icon>mdi-calendar</v-icon> {{course.duration}} {{course.duration === 1? 'day': 'days'}}
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions v-if="show">
       <v-btn
         :to="`/courses/${course.id}`"
       >
@@ -37,7 +37,8 @@ import type {Course} from "../models/course.model";
 import {defineProps, computed} from "vue";
 
 const props = defineProps<{
-  course: Course
+  course: Course,
+  show: Boolean
 }>()
 
 const level = computed(()=>{
