@@ -18,7 +18,7 @@ class TrainerSeeder extends Seeder
         $trainers = json_decode(file_get_contents("initial data/trainers.json"), true);
 
         foreach ($trainers as $trainer) {
-            $trainer["competencies"] = json_encode($trainer["competencies"]);
+            // $trainer["competencies"] = json_encode($trainer["competencies"]);
             Trainer::create($trainer);
         }
     }
