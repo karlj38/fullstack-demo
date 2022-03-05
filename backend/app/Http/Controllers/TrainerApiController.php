@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{
+    Booking,
     Course,
     Trainer
 };
@@ -60,10 +61,18 @@ class TrainerApiController extends Controller
      */
     public function show($id)
     {
-        $trainer = Trainer::find($id);
-        $code = $trainer ? 200 : 404;
+        $output = Trainer::find($id);
 
-        return response($trainer, $code);
+        if ($output) {
+            $with = ["course", "location"];
+            $output->bookings = Booking::with($with)
+            ->where("trainer_id", $output->id)
+            ->get();
+        }
+
+        $code = $output ? 200 : 404;
+
+        return response($output, $code);
     }
 
     /**
