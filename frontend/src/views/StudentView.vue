@@ -21,6 +21,7 @@
       <BookingCard
         v-for="booking in student.bookings"
         :booking="booking"
+        :show="true"
       />
     </v-container>
   </template>

@@ -8,7 +8,6 @@
       indeterminate
     />
     <CourseCard
-      v-else
       :course="course"
       :show="false"
     />
@@ -22,6 +21,7 @@
       <TrainerCard
         v-for="trainer in course.trainers"
         :trainer="trainer"
+        :show="true"
       />
     </v-container>
   </template>
