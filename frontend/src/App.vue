@@ -7,29 +7,33 @@
     >
       <v-list class="" >
         <v-list-item class="text-grey-darken-1">
+          <v-icon class="mr-2" icon="mdi-book" />
           <router-link to="/Bookings">
-            <v-icon class="mr-2" icon="mdi-book" />
             Bookings
           </router-link>
         </v-list-item>
         <v-list-item class="text-grey-darken-1">
+          <v-icon class="mr-2" icon="mdi-library" />
           <router-link to="/courses">
-            <v-icon class="mr-2" icon="mdi-library" /> Courses
+            Courses
           </router-link>
         </v-list-item>
         <v-list-item class="text-grey-darken-1">
+          <v-icon class="mr-2"  icon="mdi-map-marker" />
           <router-link to="/locations">
-            <v-icon class="mr-2"  icon="mdi-map-marker" /> Locations
+            Locations
           </router-link>
         </v-list-item>
         <v-list-item class="text-grey-darken-1">
+          <v-icon class="mr-2" icon="mdi-account-supervisor" />
           <router-link to="/students">
-            <v-icon class="mr-2" icon="mdi-account-supervisor" /> Students
+            Students
           </router-link>
         </v-list-item>
         <v-list-item class="text-grey-darken-1">
+          <v-icon class="mr-2" icon="mdi-account-supervisor" />
           <router-link to="/trainers">
-            <v-icon class="mr-2" icon="mdi-account-supervisor" /> Trainers
+            Trainers
           </router-link>
         </v-list-item>
       </v-list>
@@ -58,7 +62,7 @@ export default {
 </script>
 
 <style>
- a i {
+ a {
    text-decoration: none;
  }
 </style>
