@@ -38,7 +38,6 @@ const course = ref([])
 
 onMounted( async ()=> {
   const route = useRoute();
-  console.log(route);
   const id = route.params.id;
   const courseResponse = await getQuery(`courses/${id}`);
 
