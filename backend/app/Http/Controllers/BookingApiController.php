@@ -148,7 +148,8 @@ class BookingApiController extends Controller
     public function index()
     {
         $code = 200;
-        $output = Booking::orderBy("start")->get();
+        $with = ["course", "location", "trainer"];
+        $output = Booking::with($with)->orderBy("start")->get();
 
         return response($output, $code);
     }
@@ -184,7 +185,8 @@ class BookingApiController extends Controller
     public function show($id)
     {
         $code = 200;
-        $output = Booking::find($id);
+        $with = ["course", "location", "trainer"];
+        $output = Booking::with($with)->find($id);
 
         if ($output) {
             $output->students = Student::whereIn("id", $output->students)->get();
