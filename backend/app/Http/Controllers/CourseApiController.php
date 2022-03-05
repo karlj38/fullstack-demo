@@ -49,6 +49,8 @@ class CourseApiController extends Controller
         if ($course) {
             $course->trainers = Trainer::where("level", ">=", $course->level)
             ->whereJsonContains("competencies", $course->topic)
+            ->orderBy("firstName")
+            ->orderBy("lastName")
             ->get();
 
             $output = $course;
