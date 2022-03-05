@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\{
+    BookingSeeder,
     CourseSeeder,
     LocationSeeder,
     StudentSeeder,
@@ -24,7 +25,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             LocationSeeder::class,
             StudentSeeder::class,
-            TrainerSeeder::class
+            TrainerSeeder::class,
+            BookingSeeder::class
         ]);
     }
 }
