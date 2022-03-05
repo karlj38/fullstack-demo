@@ -8,8 +8,8 @@
     indeterminate
     />
     <StudentCard
-
       v-for="student of students"
+      :show="true"
       :student="student"
     />
   </v-container>

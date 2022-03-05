@@ -24,7 +24,7 @@
         {{student.email}}
       </a>
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions v-if="show">
       <v-btn
         :to="`/students/${student.id}`"
       >
@@ -39,7 +39,8 @@ import type {Student} from "../models/student.model";
 import {defineProps, computed} from "vue";
 
 const props = defineProps<{
-  student: Student
+  student: Student,
+  show: Boolean
 }>()
 
 const fullName = computed(()=>{

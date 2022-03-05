@@ -46,9 +46,10 @@ class StudentApiController extends Controller
         $output = Student::find($id);
 
         if ($output) {
-            $bookings = Booking::whereJsonContains("students", $output->id)->get();
-            $courseIds = $bookings->pluck("course_id")->unique();
-            $output->courses = Course::whereIn("id", $courseIds)->get();
+            $with = ["course", "location", "trainer"];
+            $output->bookings = Booking::with($with)
+            ->whereJsonContains("students", $output->id)
+            ->get();
         }
 
         $code = $output ? 200 : 404;
