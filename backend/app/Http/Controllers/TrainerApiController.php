@@ -25,9 +25,11 @@ class TrainerApiController extends Controller
         try {
             $request->validate(["course_id" => "integer|exists:courses,id"]);
 
+            $city = $request->city;
             $course = Course::find($request->course_id);
 
-            $output = Trainer::when($course, function ($query) use ($course) {
+            $output = Trainer::when($city, fn ($query) => $query->where("city", $city))
+                ->when($course, function ($query) use ($course) {
                 $query->where("level", ">=", $course->level)
                     ->whereJsonContains("competencies", $course->topic);
                 })
