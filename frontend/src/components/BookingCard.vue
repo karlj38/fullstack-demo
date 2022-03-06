@@ -50,6 +50,9 @@
         Show Details
       </v-btn>
     </v-card-actions>
+    <v-card-text v-else>
+      <v-icon>mdi-comment-text</v-icon> {{booking.comments}}
+    </v-card-text>
   </v-card>
 </template>
 
