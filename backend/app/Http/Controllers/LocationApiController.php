@@ -43,13 +43,21 @@ class LocationApiController extends Controller
             ]);
 
             $city = ucWords($request->city);
+            $onlyCities = $request->only_cities;
 
-            $output = Location::when($city, fn ($query) => $query->where("city", $city))
+            if ($onlyCities) {
+                $output = Location::select("city")
+                ->groupBy("city")
+                ->orderBy("city")
+                ->pluck("city");
+            } else {
+                $output = Location::when($city, fn ($query) => $query->where("city", $city))
                 ->orderBy("name")
                 ->get();
 
-            if ($request->radius) {
-                $output = $this->filterByRadius($output, $request);
+                if ($request->radius) {
+                    $output = $this->filterByRadius($output, $request);
+                }
             }
         } catch (\Throwable $error) {
             $code = 400;

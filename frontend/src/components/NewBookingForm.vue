@@ -16,7 +16,7 @@
               Select Course
             </v-card-title>
             <select
-              @change="resetForm"
+              @change="getTrainers"
               v-model="form.course"
               class="border"
               label="Select Course"
@@ -35,11 +35,41 @@
           <!-- -------------------------------------------------------------------------------- -->
 
           <v-col
-            v-if="form.course"
+            v-if="form.course.id"
             class="d-flex flex-column"
             cols="12"
             md="3"
+          >
+            <v-card-title
+              class="pa-0"
+              for="trainer"
+            >
+              Select City
+            </v-card-title>
+            <select
+              @change="getLocations"
+              v-model="form.city"
+              class="border"
+              label="Select City"
+              name="location"
+            >
+              <option
+                v-for="city in cities"
+                :key="city"
+                :value="city"
+              >
+                {{city}}
+              </option>
+            </select>
+          </v-col>
 
+          <!-- -------------------------------------------------------------------------------- -->
+
+          <v-col
+            v-if="form.city"
+            class="d-flex flex-column"
+            cols="12"
+            md="3"
           >
             <v-card-title
               class="pa-0"
@@ -48,7 +78,6 @@
               Select Location
             </v-card-title>
             <select
-              @change="getTrainers"
               v-model="form.location"
               class="border"
               label="Select Location"
@@ -67,7 +96,7 @@
           <!-- -------------------------------------------------------------------------------- -->
 
           <v-col
-            v-if="form.location.id && trainers.length"
+            v-if="form.location.id"
             class="d-flex flex-column"
             cols="12"
             md="3"
@@ -95,7 +124,7 @@
           <!-- -------------------------------------------------------------------------------- -->
 
           <v-col
-            v-if="form.trainer.id && students.length"
+            v-if="form.trainer.id"
             class="d-flex flex-column"
             cols="12"
             md="3"
@@ -124,7 +153,7 @@
           <!-- -------------------------------------------------------------------------------- -->
 
           <v-col
-            v-if="form.students.length"
+            v-if="form.trainer.id"
             class="d-flex flex-column"
             cols="12"
             md="3"
@@ -143,7 +172,7 @@
           </v-col>
 
           <v-col
-            v-if="form.start"
+            v-if="form.trainer.id"
             class="d-flex flex-column"
             cols="12"
             md="3"
@@ -165,7 +194,7 @@
           <!-- -------------------------------------------------------------------------------- -->
 
           <v-col
-            v-if="form.start"
+            v-if="form.trainer.id"
             class="d-flex flex-column"
             cols="12"
             md="3"
@@ -187,7 +216,7 @@
           <!-- -------------------------------------------------------------------------------- -->
 
           <v-col
-            v-if="form.start"
+            v-if="form.trainer.id"
             class="d-flex flex-column"
             cols="12"
           >
@@ -208,7 +237,7 @@
         </v-row>
 
         <v-card-actions
-          v-if="form.start"
+          v-if="form.trainer.id"
           class="justify-end"
         >
           <v-btn
@@ -227,10 +256,13 @@
 import {getQuery} from "../utils/fetchbackend";
 import {onMounted, reactive, ref, watch} from "vue";
 
+const cities = ref([])
+
 const courses = ref([])
 
 const form = reactive({
   cert: false,
+  city: "",
   comments: "",
   course: {},
   end: "",
@@ -246,17 +278,24 @@ const students = ref([])
 
 const trainers = ref([])
 
+const getLocations = async ()=> {
+  // if city changes afterwards, reset form
+  form.location = {};
+  form.trainer = {};
+
+  const locationsResponse = await getQuery('locations', {city:form.city});
+
+  locations.value = await locationsResponse.json();
+
+  getTrainers();
+}
+
 const getTrainers = async ()=> {
-  // if location changes afterwards, reset form
+  form.trainer = {};
   trainers.value = [];
-  form.cert = false;
-  form.comments = "";
-  form.students = [];
-  form.start = "";
-  form.end = "";
 
   const trainersResponse = await getQuery('trainers', {
-    city: form.location.city,
+    city: form.city,
     course_id: form.course.id
   });
 
@@ -290,25 +329,15 @@ const handleSubmission = async()=> {
 }
 
 onMounted( async ()=> {
+  const citiesResponse = await getQuery('locations', {only_cities: true});
   const coursesResponse = await getQuery('courses');
-  const locationsResponse = await getQuery('locations');
   const studentsResponse = await getQuery('students');
 
+  cities.value = await citiesResponse.json();
   courses.value = await coursesResponse.json();
-  locations.value = await locationsResponse.json();
   students.value = await studentsResponse.json();
 
 })
-
-const resetForm = () => {
-  form.cert = false,
-  form.comments = "",
-  form.end = "",
-  form.location = {};
-  form.start = "",
-  form.students = [];
-  form.trainer = {};
-}
 
 watch(() => form.start, start => {
   if (start) {
