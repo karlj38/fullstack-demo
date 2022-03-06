@@ -149,7 +149,10 @@ class BookingApiController extends Controller
     {
         $code = 200;
         $with = ["course", "location", "trainer"];
-        $output = Booking::with($with)->orderBy("start")->get();
+        $output = Booking::with($with)
+        ->whereDate("start", ">=", Carbon::now())
+        ->orderBy("start")
+        ->get();
 
         return response($output, $code);
     }
