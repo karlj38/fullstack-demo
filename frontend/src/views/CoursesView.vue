@@ -1,5 +1,21 @@
 <template>
   <h1>List of Courses</h1>
+  <v-row>
+    <v-col md="2">
+      <v-select
+        v-model="topic"
+        :items="topics"
+        label="Select topic"
+      />
+    </v-col>
+    <v-col md="2">
+      <v-select
+        v-model="level"
+        :items="[1, 2, 3, 4, 5]"
+        label="Select level"
+      />
+    </v-col>
+  </v-row>
   <v-container
       class="d-flex flex-row flex-wrap"
   >
@@ -8,7 +24,7 @@
       indeterminate
     />
     <CourseCard
-      v-for="course of courses"
+      v-for="course of filteredCourses"
       :course="course"
       :show="true"
     />
@@ -19,9 +35,33 @@
 
 import CourseCard from "../components/CourseCard.vue";
 import {getQuery} from "../utils/fetchbackend";
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
+
+const level = ref("");
+
+const topic = ref("");
+
+const filteredCourses = computed(() => {
+  let output = [...courses.value];
+
+  if (output.length && topic.value) {
+    output = output.filter(course => {
+      return course.topic === topic.value;
+    });
+  }
+
+  if (output.length && level.value) {
+    output = output.filter(course => {
+      return course.level === level.value;
+    });
+  }
+
+  return output;
+})
 
 const courses = ref([])
+
+const topics = ["Frontend", "Backend", "Fullstack", "Cloud", "Security"];
 
 onMounted( async ()=> {
   const coursesResponse = await getQuery('courses')
