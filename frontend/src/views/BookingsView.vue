@@ -1,5 +1,5 @@
 <template>
-  <v-btn @click="goToAddBooking">Add New Booking</v-btn>
+  <v-btn :to="'/bookings/new'">Add New Booking</v-btn>
   <h1>List of Bookings</h1>
   <v-container
       class="d-flex flex-row flex-wrap"

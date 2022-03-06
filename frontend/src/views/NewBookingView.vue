@@ -1,5 +1,5 @@
 <template>
-  <h2>Create a new Booking</h2>
+  <h1>Create a new Booking</h1>
 
   <new-booking-form />
 </template>
