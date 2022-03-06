@@ -176,8 +176,9 @@
             >
               Certificate Required
             </v-card-title>
-            <input
+            <v-switch
               v-model="form.cert"
+              color="blue"
               type="checkbox"
               name="cert"
             />
