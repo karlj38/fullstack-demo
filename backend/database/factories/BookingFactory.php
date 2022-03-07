@@ -47,7 +47,7 @@ class BookingFactory extends Factory
         ->inRandomOrder()
         ->limit($this->faker->numberBetween(5,10));
 
-        $start = $this->faker->dateTimeThisYear();
+        $start = $this->faker->dateTimeThisYear('+3 months');
 
         $end = Carbon::create($start)->addDays($course->duration);
 
