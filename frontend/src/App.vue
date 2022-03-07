@@ -8,7 +8,7 @@
       <v-list class="" >
         <v-list-item class="text-grey-darken-1">
           <v-icon class="mr-2" icon="mdi-book" />
-          <router-link to="/Bookings">
+          <router-link to="/bookings">
             Bookings
           </router-link>
         </v-list-item>
