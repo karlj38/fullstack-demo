@@ -8,22 +8,21 @@ You are free to use a different design system or a different Frontend framework 
 There is already an example showing the list of available courses.
 
 # Exercise:
-1. [ ] Browse the list of Upcoming Bookings
-2. [ ] Browse the list of Trainers
-3. [ ] Browse the list of Locations
-4. [ ] Create a Form to add a new Booking:
-   - It will need to be able to select from the list of courses
-   - It will need to be able to select from a list of trainers capable of teaching this course
-   - It will need to be able to select a location based on a city
+1. [X] Browse the list of Upcoming Bookings
+2. [X] Browse the list of Trainers
+3. [X] Browse the list of Locations
+4. [X] Create a Form to add a new Booking:
+   [X] It will need to be able to select from the list of courses
+   [X] It will need to be able to select from a list of trainers capable of teaching this course
+   [X] It will need to be able to select a location based on a city
 
 
 ## Bonus tasks
 1. [ ] Add authentication
-2. [ ] Add sort and filter for courses page
-3. [ ] Make UI nicer
-4. [ ] Get available locations based on browsers location
-5. [ ] Add [Components unit testing](https://vuejs.org/guide/scaling-up/testing.html#component-testing) using the 
-   testing framework of your choice
+2. [X] Add sort and filter for courses page
+3. [X] Make UI nicer
+4. [X] Get available locations based on browsers location
+5. [ ] Add [Components unit testing](https://vuejs.org/guide/scaling-up/testing.html#component-testing) using the testing framework of your choice
 
 
 

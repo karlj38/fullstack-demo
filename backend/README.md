@@ -1,3 +1,88 @@
+# Exercises:
+
+To complete this test, you will need to complete the following tasks:
+
+1. [X] Load data from *courses.json*, *location.json*, and *trainers.json* into the database. This is a one off
+   operation. Can be done by a script or a REST endpoint
+2. [X] Create an Endpoint that based on a **Course**, returns all the **Trainers** available to teach this course.
+3. [X] Create an Endpoint that returns all the **Locations** in a **City**
+4. [X] Create an Endpoint that creates a **Booking**. That endpoint needs to make sure all the conditions are met for
+   the booking.
+
+
+### Bonus tasks
+1. [ ] Protect some endpoints with Basic Auth
+2. [ ] Protect some endpoints with JWT
+3. [X] Returns all the available **Locations** within a specific Radius based on GPS coordinates
+4. [ ] [Write tests for your services and endpoints](https://docs.nestjs.com/fundamentals/testing)
+
+## Installation
+
+This backend runs Laravel in [Sail](https://laravel.com/docs/9.x/sail) (a wrapper for Docker).
+
+Please install Docker before proceeding.
+
+To initialise the project:
+
+cd into the backend directory then run:
+
+```sh
+./vendor/bin/sail up
+```
+
+However, instead of repeatedly typing vendor/bin/sail to execute Sail commands, you may wish to configure a Bash alias that allows you to execute Sail's commands more easily:
+
+```
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+```
+
+```
+sail up
+```
+
+
+The first time you run the Sail up command, Sail's application containers will be built on your machine. This could take several minutes. Don't worry, subsequent attempts to start Sail will be much faster.
+
+Once the application's Docker containers have been started, you can access the application in your web browser at: http://localhost.
+
+Although, since this an API backend only, all available routes are within: http://localhost/api.
+
+To stop all of the containers, you may simply press Control + C to stop the container's execution.
+
+## Initialisation
+
+To build the database and import the starting json date as well as additional fake seeder data for Students, and Bookings, run:
+
+```
+sail artisan migrate --seed
+```
+## Available routes
+- GET     api/bookings | return a list of Bookings from today onwards
+
+- POST    api/bookings | create a new Booking
+
+- GET     api/bookings/:id | return a specific Booking along with the related Course, Location, Trainer, and Students
+
+- GET     api/courses | return a list of Courses
+
+- GET     api/courses/:id | return a specific Course along with available Trainers
+
+- GET     api/locations | return a list of Locations filterable by either a given city, or latititude/longitude/radius, or finally you can get only a list of cities with the only_cities query parameter
+
+- GET     api/locations/:id | return a specific Location
+
+
+- GET     api/students | return a list of Students
+
+- GET     api/students/:id | return a specific Student along with enrolled Bookings
+
+
+- GET     api/trainers | return a list of Trainers filterable by city, or by course_id
+
+- GET     api/trainers/:id | return a specific Trainer along with enrolled Bookings
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
