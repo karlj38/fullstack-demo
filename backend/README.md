@@ -81,7 +81,12 @@ sail artisan migrate --seed
 
 - GET     api/trainers/:id | return a specific Trainer along with enrolled Bookings
 
+## Warning
 
+Given more time, ideally, I would have like to have integrated a scrolling pagination option, particularly for /trainers. While it is functional as is, loading 1000 Trainers in one go is quite intensive. To remedy this, you may want to add a temporary limit to the API logic in file TrainerApiController.php between lines 37 and 38 while testing:
+```
+->limit(100)
+```
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
