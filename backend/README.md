@@ -18,9 +18,9 @@ To complete this test, you will need to complete the following tasks:
 
 ## Installation
 
-This backend runs Laravel in [Sail](https://laravel.com/docs/9.x/sail) (a wrapper for Docker).
+This backend runs [Laravel](https://laravel.com) in [Sail](https://laravel.com/docs/9.x/sail) (a wrapper for Docker).
 
-Please install Docker before proceeding.
+Please install [Docker](https://www.docker.com) and [PHP Composer](https://getcomposer.org) before proceeding.
 
 To initialise the project:
 
@@ -51,7 +51,7 @@ To stop all of the containers, you may simply press Control + C to stop the cont
 
 ## Initialisation
 
-To build the database and import the starting json date as well as additional fake seeder data for Students, and Bookings, run:
+To build the database and import the starting json data as well as additional fake seeder data for Students, and Bookings, run:
 
 ```
 sail artisan migrate --seed
